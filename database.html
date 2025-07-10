@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSA Learning Hub</title>
+    <title>Databases Learning Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -49,573 +49,222 @@
     <!-- Hero Section -->
     <section class="bg-indigo-700 text-white py-20">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Data Structures & Algorithms</h2>
-            <p class="text-lg mb-6">Master DSA with comprehensive notes, JavaScript examples, and hands-on exercises covering all key concepts.</p>
+            <h2 class="text-4xl font-bold mb-4">Databases</h2>
+            <p class="text-lg mb-6">Master database concepts with comprehensive notes, SQL/NoSQL examples, and hands-on exercises.</p>
         </div>
     </section>
 
-    <!-- Data Structures Section -->
-    <section id="data-structures" class="py-16">
+    <!-- Concepts Section -->
+    <section id="concepts" class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Data Structures</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">Database Concepts</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Array -->
+                <!-- Relational Databases -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Array</h3>
-                    <p class="text-gray-600 mb-4">Arrays store elements in contiguous memory, enabling fast indexed access.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-array">More Details</button>
-                    <div id="details-array" class="concept-details">
-                        <p class="text-gray-600 mb-4">Arrays are ordered collections of elements, typically of the same type, stored in contiguous memory. In JavaScript, arrays are dynamic and can hold mixed types. They excel at random access but are less efficient for insertions/deletions.</p>
+                    <h3 class="text-xl font-semibold mb-4">Relational Databases</h3>
+                    <p class="text-gray-600 mb-4">Relational Databases store data in tables with rows and columns, using SQL for querying.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-relational">More Details</button>
+                    <div id="details-relational" class="concept-details">
+                        <p class="text-gray-600 mb-4">Relational Databases organize data into tables with defined schemas, linked by keys (primary/foreign). They ensure data integrity and support complex queries.</p>
                         <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
                         <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Access: O(1) via index.</li>
-                            <li>Insert/Delete: O(n) due to shifting.</li>
-                            <li>JavaScript arrays support methods like <code>push</code>, <code>pop</code>, <code>splice</code>.</li>
-                            <li>Used for lists, matrices, and lookup tables.</li>
+                            <li>Uses tables with rows (records) and columns (attributes).</li>
+                            <li>Primary keys uniquely identify records.</li>
+                            <li>Foreign keys establish relationships.</li>
+                            <li>Examples: MySQL, PostgreSQL, Oracle.</li>
                         </ul>
                     </div>
                     <pre class="code-block"><code>
-class MyArray {
-    constructor() {
-        this.data = [];
-    }
-    add(element) {
-        this.data.push(element);
-    }
-    get(index) {
-        return this.data[index];
-    }
-}
-const arr = new MyArray();
-arr.add(10);
-arr.add(20);
-console.log(arr.get(1)); // 20
+-- Create a table
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+-- Insert data
+INSERT INTO users (id, name, email) VALUES (1, 'Alice', 'alice@example.com');
                     </code></pre>
                 </div>
-                <!-- Linked List -->
+                <!-- SQL -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Linked List</h3>
-                    <p class="text-gray-600 mb-4">Linked Lists store elements in nodes, each pointing to the next, ideal for dynamic data.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-linkedlist">More Details</button>
-                    <div id="details-linkedlist" class="concept-details">
-                        <p class="text-gray-600 mb-4">Linked Lists consist of nodes with data and a reference to the next node. Singly linked lists are simple, while doubly linked lists include a previous pointer. They are efficient for insertions/deletions but slow for random access.</p>
+                    <h3 class="text-xl font-semibold mb-4">SQL</h3>
+                    <p class="text-gray-600 mb-4">SQL (Structured Query Language) is used to manage and query relational databases.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-sql">More Details</button>
+                    <div id="details-sql" class="concept-details">
+                        <p class="text-gray-600 mb-4">SQL provides commands for creating, querying, updating, and deleting data. It includes DDL (Data Definition Language), DML (Data Manipulation Language), and DQL (Data Query Language).</p>
                         <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
                         <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Insert/Delete: O(1) at head, O(n) elsewhere.</li>
-                            <li>Access: O(n) due to traversal.</li>
-                            <li>Dynamic size, unlike arrays.</li>
-                            <li>Used in stacks, queues, and graphs.</li>
+                            <li>DDL: CREATE, ALTER, DROP.</li>
+                            <li>DML: INSERT, UPDATE, DELETE.</li>
+                            <li>DQL: SELECT for querying.</li>
+                            <li>Supports joins, aggregates, and subqueries.</li>
                         </ul>
                     </div>
                     <pre class="code-block"><code>
-class Node {
-    constructor(data) {
-        this.data = data;
-        this.next = null;
-    }
-}
-class LinkedList {
-    constructor() {
-        this.head = null;
-    }
-    add(data) {
-        const node = new Node(data);
-        if (!this.head) {
-            this.head = node;
-        } else {
-            let current = this.head;
-            while (current.next) current = current.next;
-            current.next = node;
-        }
-    }
-}
-const list = new LinkedList();
-list.add(10);
-list.add(20);
+-- Select users with age > 25
+SELECT name, age FROM users WHERE age > 25;
+-- Join tables
+SELECT u.name, o.order_id
+FROM users u
+JOIN orders o ON u.id = o.user_id;
                     </code></pre>
                 </div>
-                <!-- Stack -->
+                <!-- NoSQL -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Stack</h3>
-                    <p class="text-gray-600 mb-4">Stacks follow Last-In-First-Out (LIFO), supporting push and pop operations.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-stack">More Details</button>
-                    <div id="details-stack" class="concept-details">
-                        <p class="text-gray-600 mb-4">Stacks manage data in a LIFO manner, useful for function calls, undo mechanisms, and expression parsing. They can be implemented with arrays or linked lists.</p>
+                    <h3 class="text-xl font-semibold mb-4">NoSQL</h3>
+                    <p class="text-gray-600 mb-4">NoSQL databases handle unstructured or semi-structured data, offering flexibility.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-nosql">More Details</button>
+                    <div id="details-nosql" class="concept-details">
+                        <p class="text-gray-600 mb-4">NoSQL databases (e.g., MongoDB, Cassandra) support various data models (document, key-value, column, graph). They scale horizontally and handle large, unstructured data.</p>
                         <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
                         <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Push/Pop: O(1).</li>
-                            <li>Used in recursion, backtracking, and parsing.</li>
-                            <li>Simple and memory-efficient.</li>
-                            <li>Limited access to top element.</li>
+                            <li>Flexible schema for dynamic data.</li>
+                            <li>Types: Document, Key-Value, Column, Graph.</li>
+                            <li>Scales horizontally across servers.</li>
+                            <li>Examples: MongoDB, Redis, DynamoDB.</li>
                         </ul>
                     </div>
                     <pre class="code-block"><code>
-class Stack {
-    constructor() {
-        this.items = [];
-    }
-    push(item) {
-        this.items.push(item);
-    }
-    pop() {
-        return this.items.pop();
-    }
-}
-const stack = new Stack();
-stack.push(10);
-stack.push(20);
-console.log(stack.pop()); // 20
+// MongoDB example
+db.users.insertOne({
+    name: "Alice",
+    email: "alice@example.com"
+});
+// Find user
+db.users.find({ name: "Alice" });
                     </code></pre>
                 </div>
-                <!-- Queue -->
+                <!-- Normalization -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Queue</h3>
-                    <p class="text-gray-600 mb-4">Queues follow First-In-First-Out (FIFO), supporting enqueue and dequeue operations.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-queue">More Details</button>
-                    <div id="details-queue" class="concept-details">
-                        <p class="text-gray-600 mb-4">Queues manage data in a FIFO manner, ideal for task scheduling, breadth-first search, and event handling. Variants include circular queues and priority queues.</p>
+                    <h3 class="text-xl font-semibold mb-4">Normalization</h3>
+                    <p class="text-gray-600 mb-4">Normalization organizes data to eliminate redundancy and ensure integrity.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-normalization">More Details</button>
+                    <div id="details-normalization" class="concept-details">
+                        <p class="text-gray-600 mb-4">Normalization divides data into tables to reduce duplication and maintain consistency, following forms (1NF, 2NF, 3NF, etc.). It optimizes storage but may increase query complexity.</p>
                         <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
                         <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Enqueue/Dequeue: O(1) with arrays or linked lists.</li>
-                            <li>Used in process scheduling, message queues.</li>
-                            <li>Dynamic size with linked list implementation.</li>
-                            <li>Variants handle priority or circular access.</li>
+                            <li>1NF: Atomic values, no repeating groups.</li>
+                            <li>2NF: No partial dependency.</li>
+                            <li>3NF: No transitive dependency.</li>
+                            <li>Balances storage and performance.</li>
                         </ul>
                     </div>
                     <pre class="code-block"><code>
-class Queue {
-    constructor() {
-        this.items = [];
-    }
-    enqueue(item) {
-        this.items.push(item);
-    }
-    dequeue() {
-        return this.items.shift();
-    }
-}
-const queue = new Queue();
-queue.enqueue(10);
-queue.enqueue(20);
-console.log(queue.dequeue()); // 10
+-- Unnormalized table
+CREATE TABLE orders (
+    order_id INT,
+    customer_name VARCHAR(50),
+    customer_email VARCHAR(100),
+    product VARCHAR(50)
+);
+-- Normalized to 1NF
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    product VARCHAR(50),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
                     </code></pre>
                 </div>
-                <!-- Binary Tree -->
+                <!-- Transactions -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Binary Tree</h3>
-                    <p class="text-gray-600 mb-4">Binary Trees consist of nodes with up to two children, used for hierarchical data.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-binarytree">More Details</button>
-                    <div id="details-binarytree" class="concept-details">
-                        <p class="text-gray-600 mb-4">Binary Trees have nodes with a left and right child, used in search trees, expression trees, and hierarchical structures. Variants include Binary Search Trees (BSTs) and AVL trees.</p>
+                    <h3 class="text-xl font-semibold mb-4">Transactions</h3>
+                    <p class="text-gray-600 mb-4">Transactions ensure data integrity by grouping operations as a single unit.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-transactions">More Details</button>
+                    <div id="details-transactions" class="concept-details">
+                        <p class="text-gray-600 mb-4">Transactions follow ACID properties (Atomicity, Consistency, Isolation, Durability) to ensure reliable operations, such as bank transfers or order processing.</p>
                         <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
                         <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Traversal: O(n) for inorder, preorder, postorder.</li>
-                            <li>Insert/Search in BST: O(h) where h is height.</li>
-                            <li>Used in databases, file systems.</li>
-                            <li>Balanced trees improve performance.</li>
+                            <li>Atomicity: All or nothing.</li>
+                            <li>Consistency: Maintains database rules.</li>
+                            <li>Isolation: Transactions run independently.</li>
+                            <li>Durability: Changes are saved.</li>
                         </ul>
                     </div>
                     <pre class="code-block"><code>
-class TreeNode {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
-}
-class BinaryTree {
-    constructor() {
-        this.root = null;
-    }
-    insert(value) {
-        const node = new TreeNode(value);
-        if (!this.root) {
-            this.root = node;
-        } else {
-            // Simplified insertion for demo
-            this.root.left = node;
-        }
-    }
-}
-const tree = new BinaryTree();
-tree.insert(10);
-tree.insert(20);
+-- Bank transfer transaction
+BEGIN TRANSACTION;
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;
                     </code></pre>
                 </div>
-                <!-- Graph -->
+                <!-- Indexing -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Graph</h3>
-                    <p class="text-gray-600 mb-4">Graphs consist of nodes connected by edges, representing relationships.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-graph">More Details</button>
-                    <div id="details-graph" class="concept-details">
-                        <p class="text-gray-600 mb-4">Graphs model networks, with nodes (vertices) and edges (connections). They can be directed/undirected, weighted/unweighted. Representations include adjacency lists and matrices.</p>
+                    <h3 class="text-xl font-semibold mb-4">Indexing</h3>
+                    <p class="text-gray-600 mb-4">Indexes improve query performance by enabling faster data retrieval.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-indexing">More Details</button>
+                    <div id="details-indexing" class="concept-details">
+                        <p class="text-gray-600 mb-4">Indexes create data structures (e.g., B-trees) to speed up searches on columns. They trade off storage and write speed for faster reads.</p>
                         <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
                         <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Traversal: O(V + E) for DFS/BFS.</li>
-                            <li>Used in social networks, maps, routing.</li>
-                            <li>Adjacency list saves space for sparse graphs.</li>
-                            <li>Supports cycles and complex relationships.</li>
+                            <li>Improves SELECT query performance.</li>
+                            <li>Slows INSERT/UPDATE due to index updates.</li>
+                            <li>Types: B-tree, Hash, Bitmap.</li>
+                            <li>Used on frequently queried columns.</li>
                         </ul>
                     </div>
                     <pre class="code-block"><code>
-class Graph {
-    constructor() {
-        this.adjList = new Map();
-    }
-    addVertex(v) {
-        this.adjList.set(v, []);
-    }
-    addEdge(v1, v2) {
-        this.adjList.get(v1).push(v2);
-        this.adjList.get(v2).push(v1);
-    }
-}
-const graph = new Graph();
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addEdge("A", "B");
+-- Create index
+CREATE INDEX idx_email ON users(email);
+-- Query using index
+SELECT * FROM users WHERE email = 'alice@example.com';
                     </code></pre>
                 </div>
-                <!-- Hash Table -->
+                <!-- Joins -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Hash Table</h3>
-                    <p class="text-gray-600 mb-4">Hash Tables store key-value pairs, offering fast retrieval using a hash function.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-hashtable">More Details</button>
-                    <div id="details-hashtable" class="concept-details">
-                        <p class="text-gray-600 mb-4">Hash Tables use a hash function to map keys to indices in an array, enabling O(1) average-case access. Collisions are handled via chaining or open addressing.</p>
+                    <h3 class="text-xl font-semibold mb-4">Joins</h3>
+                    <p class="text-gray-600 mb-4">Joins combine data from multiple tables based on related columns.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-joins">More Details</button>
+                    <div id="details-joins" class="concept-details">
+                        <p class="text-gray-600 mb-4">Joins merge tables using keys (e.g., foreign keys). Types include INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL JOIN, each handling data inclusion differently.</p>
                         <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
                         <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Access/Insert/Delete: O(1) average, O(n) worst.</li>
-                            <li>Used in databases, caches, dictionaries.</li>
-                            <li>Collision resolution critical for performance.</li>
-                            <li>JavaScript’s <code>Map</code> is a hash table.</li>
+                            <li>INNER JOIN: Matching records only.</li>
+                            <li>LEFT JOIN: All from left table, matched from right.</li>
+                            <li>RIGHT JOIN: All from right table, matched from left.</li>
+                            <li>FULL JOIN: All records from both tables.</li>
                         </ul>
                     </div>
                     <pre class="code-block"><code>
-class HashTable {
-    constructor(size = 10) {
-        this.table = new Array(size);
-    }
-    hash(key) {
-        let hash = 0;
-        for (let i = 0; i < key.length; i++) hash += key.charCodeAt(i);
-        return hash % this.table.length;
-    }
-    set(key, value) {
-        const index = this.hash(key);
-        this.table[index] = this.table[index] || [];
-        this.table[index].push([key, value]);
-    }
-}
-const ht = new HashTable();
-ht.set("name", "Alice");
+-- Inner join example
+SELECT u.name, o.order_id
+FROM users u
+INNER JOIN orders o ON u.id = o.user_id;
                     </code></pre>
                 </div>
-                <!-- Heap -->
+                <!-- Database Design -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Heap</h3>
-                    <p class="text-gray-600 mb-4">Heaps are tree-based structures maintaining a partial order, used for priority queues.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-heap">More Details</button>
-                    <div id="details-heap" class="concept-details">
-                        <p class="text-gray-600 mb-4">Heaps (e.g., max-heap, min-heap) ensure the parent is larger/smaller than children. They are used in priority queues, heap sort, and graph algorithms like Dijkstra’s.</p>
+                    <h3 class="text-xl font-semibold mb-4">Database Design</h3>
+                    <p class="text-gray-600 mb-4">Database Design involves structuring data for efficiency and scalability.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-design">More Details</button>
+                    <div id="details-design" class="concept-details">
+                        <p class="text-gray-600 mb-4">Database Design creates schemas to optimize storage, retrieval, and maintenance. It includes ER modeling, normalization, and choosing appropriate data types.</p>
                         <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
                         <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Insert/Extract: O(log n).</li>
-                            <li>Used in scheduling, graph algorithms.</li>
-                            <li>Array-based implementation is common.</li>
-                            <li>Heapify maintains heap property.</li>
+                            <li>ER Diagrams model entities and relationships.</li>
+                            <li>Normalization reduces redundancy.</li>
+                            <li>Data types impact performance and storage.</li>
+                            <li>Scalability and maintainability are key.</li>
                         </ul>
                     </div>
                     <pre class="code-block"><code>
-class MinHeap {
-    constructor() {
-        this.heap = [];
-    }
-    insert(value) {
-        this.heap.push(value);
-        this.bubbleUp();
-    }
-    bubbleUp() {
-        let index = this.heap.length - 1;
-        while (index > 0) {
-            let parent = Math.floor((index - 1) / 2);
-            if (this.heap[index] >= this.heap[parent]) break;
-            [this.heap[index], this.heap[parent]] = [this.heap[parent], this.heap[index]];
-            index = parent;
-        }
-    }
-}
-const heap = new MinHeap();
-heap.insert(10);
-heap.insert(5);
-                    </code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Algorithms Section -->
-    <section id="algorithms" class="py-16 bg-gray-200">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Algorithms</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Bubble Sort -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Bubble Sort</h3>
-                    <p class="text-gray-600 mb-4">Bubble Sort swaps adjacent elements to sort an array.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-bubblesort">More Details</button>
-                    <div id="details-bubblesort" class="concept-details">
-                        <p class="text-gray-600 mb-4">Bubble Sort compares adjacent elements, swapping them if out of order, bubbling up larger elements. It’s simple but inefficient for large datasets.</p>
-                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
-                        <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Time Complexity: O(n²).</li>
-                            <li>Space Complexity: O(1).</li>
-                            <li>Stable sorting algorithm.</li>
-                            <li>Best for small or nearly sorted arrays.</li>
-                        </ul>
-                    </div>
-                    <pre class="code-block"><code>
-class BubbleSort {
-    sort(arr) {
-        const n = arr.length;
-        for (let i = 0; i < n - 1; i++) {
-            for (let j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-                }
-            }
-        }
-        return arr;
-    }
-}
-const sorter = new BubbleSort();
-console.log(sorter.sort([64, 34, 25, 12, 22])); // [12, 22, 25, 34, 64]
-                    </code></pre>
-                </div>
-                <!-- Quick Sort -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Quick Sort</h3>
-                    <p class="text-gray-600 mb-4">Quick Sort partitions an array around a pivot, recursively sorting subarrays.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-quicksort">More Details</button>
-                    <div id="details-quicksort" class="concept-details">
-                        <p class="text-gray-600 mb-4">Quick Sort selects a pivot, partitions elements around it, and recursively sorts. It’s efficient for large datasets but sensitive to pivot choice.</p>
-                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
-                        <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Time Complexity: O(n log n) average, O(n²) worst.</li>
-                            <li>Space Complexity: O(log n).</li>
-                            <li>Not stable but in-place.</li>
-                            <li>Used in many standard libraries.</li>
-                        </ul>
-                    </div>
-                    <pre class="code-block"><code>
-class QuickSort {
-    sort(arr, low = 0, high = arr.length - 1) {
-        if (low < high) {
-            const pi = this.partition(arr, low, high);
-            this.sort(arr, low, pi - 1);
-            this.sort(arr, pi + 1, high);
-        }
-        return arr;
-    }
-    partition(arr, low, high) {
-        const pivot = arr[high];
-        let i = low - 1;
-        for (let j = low; j < high; j++) {
-            if (arr[j] <= pivot) {
-                i++;
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-        }
-        [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
-        return i + 1;
-    }
-}
-const sorter = new QuickSort();
-console.log(sorter.sort([64, 34, 25, 12, 22])); // [12, 22, 25, 34, 64]
-                    </code></pre>
-                </div>
-                <!-- Binary Search -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Binary Search</h3>
-                    <p class="text-gray-600 mb-4">Binary Search finds an element in a sorted array by halving the search space.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-binarysearch">More Details</button>
-                    <div id="details-binarysearch" class="concept-details">
-                        <p class="text-gray-600 mb-4">Binary Search divides the sorted array, comparing the middle element to the target, eliminating half the search space each step. It’s highly efficient but requires sorted input.</p>
-                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
-                        <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Time Complexity: O(log n).</li>
-                            <li>Space Complexity: O(1) iterative, O(log n) recursive.</li>
-                            <li>Requires sorted data.</li>
-                            <li>Used in search operations, BSTs.</li>
-                        </ul>
-                    </div>
-                    <pre class="code-block"><code>
-class BinarySearch {
-    search(arr, target) {
-        let left = 0, right = arr.length - 1;
-        while (left <= right) {
-            const mid = Math.floor((left + right) / 2);
-            if (arr[mid] === target) return mid;
-            if (arr[mid] < target) left = mid + 1;
-            else right = mid - 1;
-        }
-        return -1;
-    }
-}
-const searcher = new BinarySearch();
-console.log(searcher.search([1, 2, 3, 4, 5], 3)); // 2
-                    </code></pre>
-                </div>
-                <!-- Recursion -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Recursion</h3>
-                    <p class="text-gray-600 mb-4">Recursion solves problems by breaking them into smaller subproblems.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-recursion">More Details</button>
-                    <div id="details-recursion" class="concept-details">
-                        <p class="text-gray-600 mb-4">Recursion involves a function calling itself with a base case to terminate. It simplifies problems like tree traversals but can be memory-intensive due to call stack growth.</p>
-                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
-                        <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Requires base case to avoid infinite recursion.</li>
-                            <li>Time/Space Complexity depends on problem.</li>
-                            <li>Used in factorial, Fibonacci, tree algorithms.</li>
-                            <li>Tail recursion can optimize space.</li>
-                        </ul>
-                    </div>
-                    <pre class="code-block"><code>
-class Recursion {
-    factorial(n) {
-        if (n <= 1) return 1;
-        return n * this.factorial(n - 1);
-    }
-}
-const calc = new Recursion();
-console.log(calc.factorial(5)); // 120
-                    </code></pre>
-                </div>
-                <!-- Depth-First Search (DFS) -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Depth-First Search (DFS)</h3>
-                    <p class="text-gray-600 mb-4">DFS explores a graph by diving deep into each branch before backtracking.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-dfs">More Details</button>
-                    <div id="details-dfs" class="concept-details">
-                        <p class="text-gray-600 mb-4">DFS traverses graphs using recursion or a stack, exploring as far as possible along each branch. It’s used for pathfinding, cycle detection, and topological sorting.</p>
-                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
-                        <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Time Complexity: O(V + E).</li>
-                            <li>Space Complexity: O(V) for recursion stack.</li>
-                            <li>Used in maze solving, connected components.</li>
-                            <li>Can be recursive or iterative.</li>
-                        </ul>
-                    </div>
-                    <pre class="code-block"><code>
-class Graph {
-    constructor() {
-        this.adjList = new Map();
-    }
-    addVertex(v) {
-        this.adjList.set(v, []);
-    }
-    addEdge(v1, v2) {
-        this.adjList.get(v1).push(v2);
-    }
-    dfs(start) {
-        const visited = new Set();
-        const result = [];
-        const dfsUtil = (vertex) => {
-            visited.add(vertex);
-            result.push(vertex);
-            for (let neighbor of this.adjList.get(vertex)) {
-                if (!visited.has(neighbor)) dfsUtil(neighbor);
-            }
-        };
-        dfsUtil(start);
-        return result;
-    }
-}
-const graph = new Graph();
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addEdge("A", "B");
-console.log(graph.dfs("A")); // ["A", "B"]
-                    </code></pre>
-                </div>
-                <!-- Breadth-First Search (BFS) -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Breadth-First Search (BFS)</h3>
-                    <p class="text-gray-600 mb-4">BFS explores a graph level by level using a queue.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-bfs">More Details</button>
-                    <div id="details-bfs" class="concept-details">
-                        <p class="text-gray-600 mb-4">BFS traverses graphs using a queue, visiting all neighbors of a node before moving deeper. It’s used for shortest paths in unweighted graphs and level-order traversal.</p>
-                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
-                        <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Time Complexity: O(V + E).</li>
-                            <li>Space Complexity: O(V) for queue.</li>
-                            <li>Used in GPS, social networks.</li>
-                            <li>Guarantees shortest path in unweighted graphs.</li>
-                        </ul>
-                    </div>
-                    <pre class="code-block"><code>
-class Graph {
-    constructor() {
-        this.adjList = new Map();
-    }
-    addVertex(v) {
-        this.adjList.set(v, []);
-    }
-    addEdge(v1, v2) {
-        this.adjList.get(v1).push(v2);
-    }
-    bfs(start) {
-        const visited = new Set();
-        const queue = [start];
-        const result = [];
-        visited.add(start);
-        while (queue.length) {
-            const vertex = queue.shift();
-            result.push(vertex);
-            for (let neighbor of this.adjList.get(vertex)) {
-                if (!visited.has(neighbor)) {
-                    visited.add(neighbor);
-                    queue.push(neighbor);
-                }
-            }
-        }
-        return result;
-    }
-}
-const graph = new Graph();
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addEdge("A", "B");
-console.log(graph.bfs("A")); // ["A", "B"]
-                    </code></pre>
-                </div>
-                <!-- Dynamic Programming -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Dynamic Programming</h3>
-                    <p class="text-gray-600 mb-4">Dynamic Programming solves problems by breaking them into overlapping subproblems.</p>
-                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-dp">More Details</button>
-                    <div id="details-dp" class="concept-details">
-                        <p class="text-gray-600 mb-4">Dynamic Programming (DP) optimizes recursive solutions by storing results of subproblems, using memoization or tabulation. It’s used for optimization problems like knapsack or Fibonacci.</p>
-                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
-                        <ul class="list-disc pl-6 text-gray-600 mb-4">
-                            <li>Time Complexity: Varies (e.g., O(n) for Fibonacci).</li>
-                            <li>Space Complexity: Varies (e.g., O(n) for tabulation).</li>
-                            <li>Used in optimization, pathfinding.</li>
-                            <li>Memoization vs. tabulation trade-offs.</li>
-                        </ul>
-                    </div>
-                    <pre class="code-block"><code>
-class DynamicProgramming {
-    fibonacci(n, memo = {}) {
-        if (n <= 1) return n;
-        if (n in memo) return memo[n];
-        memo[n] = this.fibonacci(n - 1, memo) + this.fibonacci(n - 2, memo);
-        return memo[n];
-    }
-}
-const dp = new DynamicProgramming();
-console.log(dp.fibonacci(10)); // 55
+-- Example schema
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+);
+CREATE TABLE departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
                     </code></pre>
                 </div>
             </div>
@@ -625,101 +274,47 @@ console.log(dp.fibonacci(10)); // 55
     <!-- Exercises Section -->
     <section id="exercises" class="py-16 bg-gray-200">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">DSA Exercises</h2>
+            <h2 class="text-3xl font-bold text-center mb-12">Database Exercises</h2>
             <div class="space-y-8">
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Exercise 1: Reverse a Linked List</h3>
-                    <p class="text-gray-600 mb-4">Create a <code>LinkedList</code> class with a method to reverse the list.</p>
+                    <h3 class="text-xl font-semibold mb-4">Exercise 1: Create a Normalized Schema</h3>
+                    <p class="text-gray-600 mb-4">Design a normalized schema for a library with books and authors.</p>
                     <button class="show-solution bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" data-target="solution1">Show Solution</button>
                     <pre id="solution1" class="exercise-solution code-block"><code>
-class Node {
-    constructor(data) {
-        this.data = data;
-        this.next = null;
-    }
-}
-class LinkedList {
-    constructor() {
-        this.head = null;
-    }
-    add(data) {
-        const node = new Node(data);
-        if (!this.head) {
-            this.head = node;
-        } else {
-            let current = this.head;
-            while (current.next) current = current.next;
-            current.next = node;
-        }
-    }
-    reverse() {
-        let prev = null, current = this.head;
-        while (current) {
-            const next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-        }
-        this.head = prev;
-    }
-}
-const list = new LinkedList();
-list.add(1);
-list.add(2);
-list.reverse();
+CREATE TABLE authors (
+    author_id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+CREATE TABLE books (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(100),
+    author_id INT,
+    FOREIGN KEY (author_id) REFERENCES authors(author_id)
+);
                     </code></pre>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Exercise 2: Implement a Priority Queue</h3>
-                    <p class="text-gray-600 mb-4">Create a <code>PriorityQueue</code> class using a min-heap.</p>
+                    <h3 class="text-xl font-semibold mb-4">Exercise 2: Write a SQL Query with Join</h3>
+                    <p class="text-gray-600 mb-4">Write a query to list all employees and their department names.</p>
                     <button class="show-solution bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" data-target="solution2">Show Solution</button>
                     <pre id="solution2" class="exercise-solution code-block"><code>
-class PriorityQueue {
-    constructor() {
-        this.heap = [];
-    }
-    enqueue(value, priority) {
-        this.heap.push({ value, priority });
-        this.bubbleUp();
-    }
-    bubbleUp() {
-        let index = this.heap.length - 1;
-        while (index > 0) {
-            let parent = Math.floor((index - 1) / 2);
-            if (this.heap[index].priority >= this.heap[parent].priority) break;
-            [this.heap[index], this.heap[parent]] = [this.heap[parent], this.heap[index]];
-            index = parent;
-        }
-    }
-}
-const pq = new PriorityQueue();
-pq.enqueue("Task1", 2);
-pq.enqueue("Task2", 1);
+SELECT e.name, d.dept_name
+FROM employees e
+LEFT JOIN departments d ON e.dept_id = d.dept_id;
                     </code></pre>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Exercise 3: Knapsack Problem (DP)</h3>
-                    <p class="text-gray-600 mb-4">Implement the 0/1 Knapsack problem using dynamic programming.</p>
+                    <h3 class="text-xl font-semibold mb-4">Exercise 3: MongoDB Insert and Query</h3>
+                    <p class="text-gray-600 mb-4">Insert a document into a MongoDB collection and query it.</p>
                     <button class="show-solution bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" data-target="solution3">Show Solution</button>
                     <pre id="solution3" class="exercise-solution code-block"><code>
-class Knapsack {
-    knapsack(values, weights, capacity) {
-        const n = values.length;
-        const dp = Array(n + 1).fill().map(() => Array(capacity + 1).fill(0));
-        for (let i = 1; i <= n; i++) {
-            for (let w = 0; w <= capacity; w++) {
-                if (weights[i - 1] <= w) {
-                    dp[i][w] = Math.max(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1]);
-                } else {
-                    dp[i][w] = dp[i - 1][w];
-                }
-            }
-        }
-        return dp[n][capacity];
-    }
-}
-const knapsack = new Knapsack();
-console.log(knapsack.knapsack([60, 100, 120], [10, 20, 30], 50)); // 220
+// Insert document
+db.products.insertOne({
+    name: "Laptop",
+    price: 999.99
+});
+// Query document
+db.products.find({ price: { $gt: 500 } });
                     </code></pre>
                 </div>
             </div>
