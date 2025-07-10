@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .code-block {
+            background-color: #1f2937;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        .exercise-solution, .concept-details {
+            display: none;
+        }
+        .exercise-solution.active, .concept-details.active {
+            display: block;
+        }
+        .concept-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .concept-details.active {
+            max-height: 1500px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-indigo-600 text-white p-4 sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Programming Learning Hub</h1>
+            <div class="space-x-4">
+                <a href="index.html" class="hover:text-indigo-200">Home</a>
+                <a href="oop.html" class="hover:text-indigo-200">OOP</a>
+                <a href="dsa.html" class="hover:text-indigo-200">DSA</a>
+                <a href="databases.html" class="hover:text-indigo-200">Databases</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-indigo-700 text-white py-20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">Object-Oriented Programming</h2>
+            <p class="text-lg mb-6">Master OOP concepts with detailed explanations, JavaScript examples, and hands-on exercises.</p>
+        </div>
+    </section>
+
+    <!-- Concepts Section -->
+    <section id="concepts" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">OOP Concepts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Classes and Objects -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Classes & Objects</h3>
+                    <p class="text-gray-600 mb-4">Classes are blueprints for objects, which encapsulate data and behavior.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-classes">More Details</button>
+                    <div id="details-classes" class="concept-details">
+                        <p class="text-gray-600 mb-4">A class defines properties and methods, while objects are instances created from the class. JavaScript classes (ES6) provide a structured way to model real-world entities, using constructors for initialization.</p>
+                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
+                        <ul class="list-disc pl-6 text-gray-600 mb-4">
+                            <li>Classes use the <code>class</code> keyword.</li>
+                            <li>Constructors initialize object properties with <code>new</code>.</li>
+                            <li>Objects represent specific instances of a class.</li>
+                            <li>Supports modularity and reusability.</li>
+                        </ul>
+                    </div>
+                    <pre class="code-block"><code>
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    introduce() {
+        return `Hi, I'm ${this.name}, ${this.age} years old.`;
+    }
+}
+const person = new Person("Alice", 25);
+console.log(person.introduce()); // Hi, I'm Alice, 25 years old.
+                    </code></pre>
+                </div>
+                <!-- Encapsulation -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Encapsulation</h3>
+                    <p class="text-gray-600 mb-4">Encapsulation bundles data and methods, restricting direct access to some components.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-encapsulation">More Details</button>
+                    <div id="details-encapsulation" class="concept-details">
+                        <p class="text-gray-600 mb-4">Encapsulation protects an object's internal state using private fields (<code>#</code>) and methods, exposing only necessary interfaces via getters/setters. It ensures data integrity and modularity.</p>
+                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
+                        <ul class="list-disc pl-6 text-gray-600 mb-4">
+                            <li>Private fields prevent unauthorized access.</li>
+                            <li>Getters/setters control data manipulation.</li>
+                            <li>Reduces complexity and enhances maintainability.</li>
+                            <li>JavaScript uses <code>#</code> for private fields (ES2020).</li>
+                        </ul>
+                    </div>
+                    <pre class="code-block"><code>
+class BankAccount {
+    #balance = 0;
+    constructor(owner) {
+        this.owner = owner;
+    }
+    deposit(amount) {
+        if (amount > 0) this.#balance += amount;
+        return this.#balance;
+    }
+    getBalance() {
+        return this.#balance;
+    }
+}
+const account = new BankAccount("Bob");
+console.log(account.deposit(100)); // 100
+console.log(account.getBalance()); // 100
+                    </code></pre>
+                </div>
+                <!-- Inheritance -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Inheritance</h3>
+                    <p class="text-gray-600 mb-4">Inheritance allows a class to inherit properties and methods from another class.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-inheritance">More Details</button>
+                    <div id="details-inheritance" class="concept-details">
+                        <p class="text-gray-600 mb-4">Inheritance creates a hierarchy where a subclass inherits from a superclass, promoting code reuse. JavaScript uses <code>extends</code> and <code>super</code> to implement inheritance.</p>
+                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
+                        <ul class="list-disc pl-6 text-gray-600 mb-4">
+                            <li>Subclasses extend superclasses with <code>extends</code>.</li>
+                            <li><code>super()</code> calls the parent constructor.</li>
+                            <li>Supports hierarchical organization.</li>
+                            <li>Reduces redundant code.</li>
+                        </ul>
+                    </div>
+                    <pre class="code-block"><code>
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        return `${this.name} makes a sound.`;
+    }
+}
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name);
+        this.breed = breed;
+    }
+    speak() {
+        return `${this.name} barks!`;
+    }
+}
+const dog = new Dog("Rex", "Golden Retriever");
+console.log(dog.speak()); // Rex barks!
+                    </code></pre>
+                </div>
+                <!-- Polymorphism -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Polymorphism</h3>
+                    <p class="text-gray-600 mb-4">Polymorphism allows objects of different classes to be treated as instances of a common superclass.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-polymorphism">More Details</button>
+                    <div id="details-polymorphism" class="concept-details">
+                        <p class="text-gray-600 mb-4">Polymorphism enables flexibility by allowing subclasses to override superclass methods, providing specific implementations while sharing a common interface.</p>
+                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
+                        <ul class="list-disc pl-6 text-gray-600 mb-4">
+                            <li>Method overriding customizes behavior.</li>
+                            <li>Supports dynamic method resolution.</li>
+                            <li>Enhances code scalability.</li>
+                            <li>Common in inheritance hierarchies.</li>
+                        </ul>
+                    </div>
+                    <pre class="code-block"><code>
+class Shape {
+    area() {
+        return 0;
+    }
+}
+class Circle extends Shape {
+    constructor(radius) {
+        super();
+        this.radius = radius;
+    }
+    area() {
+        return Math.PI * this.radius ** 2;
+    }
+}
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+    area() {
+        return this.width * this.height;
+    }
+}
+const shapes = [new Circle(5), new Rectangle(4, 6)];
+shapes.forEach(shape => console.log(shape.area())); // ~78.54, 24
+                    </code></pre>
+                </div>
+                <!-- Abstraction -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Abstraction</h3>
+                    <p class="text-gray-600 mb-4">Abstraction hides complex implementation details, exposing only necessary parts.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-abstraction">More Details</button>
+                    <div id="details-abstraction" class="concept-details">
+                        <p class="text-gray-600 mb-4">Abstraction simplifies interaction by hiding internal mechanics, using private fields/methods or abstract classes (simulated in JavaScript). It focuses on what an object does, not how.</p>
+                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
+                        <ul class="list-disc pl-6 text-gray-600 mb-4">
+                            <li>Private fields (<code>#</code>) hide implementation.</li>
+                            <li>Abstract classes (emulated) define interfaces.</li>
+                            <li>Improves usability and maintainability.</li>
+                            <li>Reduces complexity for end users.</li>
+                        </ul>
+                    </div>
+                    <pre class="code-block"><code>
+class CoffeeMachine {
+    #boiler = false;
+    makeCoffee() {
+        this.#heatBoiler();
+        return "Coffee is ready!";
+    }
+    #heatBoiler() {
+        this.#boiler = true;
+        console.log("Boiler heated.");
+    }
+}
+const machine = new CoffeeMachine();
+console.log(machine.makeCoffee()); // Boiler heated. Coffee is ready!
+                    </code></pre>
+                </div>
+                <!-- Method Overriding -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Method Overriding</h3>
+                    <p class="text-gray-600 mb-4">Method overriding allows a subclass to redefine a superclass method.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-overriding">More Details</button>
+                    <div id="details-overriding" class="concept-details">
+                        <p class="text-gray-600 mb-4">Method overriding is key to polymorphism, allowing subclasses to customize inherited methods. The <code>super</code> keyword can call the superclass method if needed.</p>
+                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
+                        <ul class="list-disc pl-6 text-gray-600 mb-4">
+                            <li>Subclasses override methods for specific behavior.</li>
+                            <li><code>super</code> accesses parent methods.</li>
+                            <li>Enables polymorphic behavior.</li>
+                            <li>Common in inheritance chains.</li>
+                        </ul>
+                    </div>
+                    <pre class="code-block"><code>
+class Vehicle {
+    move() {
+        return "The vehicle moves.";
+    }
+}
+class Car extends Vehicle {
+    move() {
+        return `${super.move()} The car drives on roads.`;
+    }
+}
+const car = new Car();
+console.log(car.move()); // The vehicle moves. The car drives on roads.
+                    </code></pre>
+                </div>
+                <!-- Composition -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Composition</h3>
+                    <p class="text-gray-600 mb-4">Composition combines objects to form complex behaviors, favoring "has-a" relationships over inheritance.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-composition">More Details</button>
+                    <div id="details-composition" class="concept-details">
+                        <p class="text-gray-600 mb-4">Composition builds objects by combining simpler ones, promoting flexibility and reuse. Unlike inheritance ("is-a"), composition models "has-a" relationships, reducing tight coupling.</p>
+                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
+                        <ul class="list-disc pl-6 text-gray-600 mb-4">
+                            <li>Promotes loose coupling.</li>
+                            <li>Objects contain other objects.</li>
+                            <li>More flexible than inheritance.</li>
+                            <li>Common in modular designs.</li>
+                        </ul>
+                    </div>
+                    <pre class="code-block"><code>
+class Engine {
+    start() {
+        return "Engine started.";
+    }
+}
+class Car {
+    constructor() {
+        this.engine = new Engine();
+    }
+    drive() {
+        return `${this.engine.start()} Car is driving.`;
+    }
+}
+const car = new Car();
+console.log(car.drive()); // Engine started. Car is driving.
+                    </code></pre>
+                </div>
+                <!-- Association -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Association</h3>
+                    <p class="text-gray-600 mb-4">Association defines relationships between objects, where objects interact but remain independent.</p>
+                    <button class="toggle-details text-indigo-600 hover:underline mb-4" data-target="details-association">More Details</button>
+                    <div id="details-association" class="concept-details">
+                        <p class="text-gray-600 mb-4">Association models loose relationships, like objects referencing each other. It includes aggregation (whole-part, e.g., a department and employees) and simple associations (e.g., a teacher and student).</p>
+                        <p class="text-gray-600 mb-4"><strong>Key Points:</strong></p>
+                        <ul class="list-disc pl-6 text-gray-600 mb-4">
+                            <li>Objects are independent but related.</li>
+                            <li>Includes aggregation and composition.</li>
+                            <li>Flexible and loosely coupled.</li>
+                            <li>Models real-world relationships.</li>
+                        </ul>
+                    </div>
+                    <pre class="code-block"><code>
+class Teacher {
+    constructor(name) {
+        this.name = name;
+    }
+}
+class Student {
+    constructor(name) {
+        this.name = name;
+        this.teachers = [];
+    }
+    assignTeacher(teacher) {
+        this.teachers.push(teacher);
+    }
+}
+const teacher = new Teacher("Dr. Smith");
+const student = new Student("Alice");
+student.assignTeacher(teacher);
+console.log(student.teachers[0].name); // Dr. Smith
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exercises Section -->
+    <section id="exercises" class="py-16 bg-gray-200">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">OOP Exercises</h2>
+            <div class="space-y-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Exercise 1: Student Class</h3>
+                    <p class="text-gray-600 mb-4">Create a <code>Student</code> class with private <code>grades</code> and methods to add grades and compute average.</p>
+                    <button class="show-solution bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" data-target="solution1">Show Solution</button>
+                    <pre id="solution1" class="exercise-solution code-block"><code>
+class Student {
+    #grades = [];
+    constructor(name) {
+        this.name = name;
+    }
+    addGrade(grade) {
+        if (grade >= 0 && grade <= 100) this.#grades.push(grade);
+        return this.#grades;
+    }
+    getAverageGrade() {
+        const sum = this.#grades
+
+.reduce((a, b) => a + b, 0);
+        return this.#grades.length ? (sum / this.#grades.length).toFixed(2) : 0;
+    }
+}
+const student = new Student("Alice");
+student.addGrade(85);
+student.addGrade(90);
+console.log(student.getAverageGrade()); // 87.50
+                    </code></pre>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Exercise 2: Vehicle Hierarchy</h3>
+                    <p class="text-gray-600 mb-4">Create a <code>Vehicle</code> class and a <code>Bike</code> class that extends it, overriding a method.</p>
+                    <button class="show-solution bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" data-target="solution2">Show Solution</button>
+                    <pre id="solution2" class="exercise-solution code-block"><code>
+class Vehicle {
+    constructor(name) {
+        this.name = name;
+    }
+    describe() {
+        return `This is a ${this.name} vehicle.`;
+    }
+}
+class Bike extends Vehicle {
+    describe() {
+        return `${super.describe()} It's a two-wheeler.`;
+    }
+}
+const bike = new Bike("Harley");
+console.log(bike.describe()); // This is a Harley vehicle. It's a two-wheeler.
+                    </code></pre>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Exercise 3: Composition</h3>
+                    <p class="text-gray-600 mb-4">Create a <code>Computer</code> class with a <code>Processor</code> component using composition.</p>
+                    <button class="show-solution bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" data-target="solution3">Show Solution</button>
+                    <pre id="solution3" class="exercise-solution code-block"><code>
+class Processor {
+    process() {
+        return "Processing data.";
+    }
+}
+class Computer {
+    constructor() {
+        this.processor = new Processor();
+    }
+    run() {
+        return `${this.processor.process()} Computer is running.`;
+    }
+}
+const computer = new Computer();
+console.log(computer.run()); // Processing data. Computer is running.
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-indigo-600 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Programming Learning Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle exercise solutions and concept details
+        document.querySelectorAll('.show-solution, .toggle-details').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const target = document.getElementById(targetId);
+                target.classList.toggle('active');
+                button.textContent = target.classList.contains('active') ? 
+                    (button.classList.contains('show-solution') ? 'Hide Solution' : 'Less Details') : 
+                    (button.classList.contains('show-solution') ? 'Show Solution' : 'More Details');
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
